@@ -1,1 +1,28 @@
 random-user-generator-api
+
+Log de alterações:
+
+1. Configuração e Infraestrutura (Program.cs e appsettings.json)
+Configurado o framework ASP.NET Core para rodar a aplicação e conectar ao banco de dados.
+Foi configurada a conexão com o PostgreSQL via Entity Framework Core (EF Core), utilizando a connection string definida no appsettings.json. O Program.cs também estabeleceu a Injeção de Dependência (DI) para todas as camadas (Services, Repositories) e o HttpClient para consumo da API externa.
+
+2. Camada de Persistência e Acesso a Dados (Entities, Data, Repositories)
+Criado o modelo de dados e a ponte entre a aplicação e o PostgreSQL.
+
+Entities/User.cs: Define a estrutura da tabela no banco de dados, mapeando os campos de interesse da API externa (name, email, phone, birthday, address, password, uuid).
+
+Data/ApplicationDbContext.cs: Classe central do EF Core que traduz as entidades C# em comandos SQL.
+
+Repositories (IUserRepository.cs e UserRepository.cs): Cria a abstração do acesso a dados com todos os métodos CRUD necessários (Add, Get All, Get By Id, Update), isolando o serviço da tecnologia de banco de dados.
+
+3. Camada de Transferência de Dados (DTOs)
+O objetivo é Controlar a entrada e saída de dados, formatando e ocultando informações internas.
+
+UserResponseDto.cs: Define o formato de saída para o cliente (Web/Front-end), omitindo dados sensíveis (como a senha e o Uuid).
+
+RandomUserApiModels.cs: Define o formato de entrada para o consumo da API externa, espelhando exatamente a estrutura JSON aninhada da API randomuser.me.
+
+4. Camada de Lógica de Negócio (Services)
+Criada a base que trabalhará a lógica de negócio principal da API.
+
+A interface IUserService.cs foi criada para declarar os três métodos principais da API: Criar e Salvar (consumo da API), Listar Usuários (relatório) e Atualizar Usuário. A classe UserService.cs está pronta para ser implementada, orquestrando o HttpClient e o UserRepository.
