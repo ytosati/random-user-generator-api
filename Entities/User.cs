@@ -14,9 +14,7 @@ namespace random_user_generator_api.Entities
 
         //Name
         [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
+        public string Name { get; set; }
 
         //Email
         [Required]

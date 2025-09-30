@@ -12,5 +12,14 @@ namespace random_user_generator_api.Data
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .Property(u => u.DateOfBirth)
+                .HasColumnType("date");
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -12,8 +12,8 @@ using random_user_generator_api.Data;
 namespace random_user_generator_api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250930021822_InitialCreation")]
-    partial class InitialCreation
+    [Migration("20250930180007_InitialCreationV2")]
+    partial class InitialCreationV2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,20 +41,16 @@ namespace random_user_generator_api.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("date");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("LastName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 

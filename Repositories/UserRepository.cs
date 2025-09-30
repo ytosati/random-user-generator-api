@@ -21,10 +21,10 @@ namespace random_user_generator_api.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<User>> GetAllAsync()
+        public async Task<List<User>> GetAllUsersAsync()
         {
             //Busca todos os registros da tabela Users
-            return await _context.Users.AsNoTracking().ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
         public async Task<User?> GetByIdAsync(int id)

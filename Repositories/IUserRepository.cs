@@ -7,7 +7,7 @@ namespace random_user_generator_api.Repositories
     {
         Task AddAsync(User user);
 
-        Task<List<User>> GetAllAsync();
+        Task<List<User>> GetAllUsersAsync();
 
         Task<User?> GetByIdAsync(int id);
 
