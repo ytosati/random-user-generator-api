@@ -3,6 +3,8 @@ using random_user_generator_api.Repositories;
 using random_user_generator_api.DTOs;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace random_user_generator_api.Services
 {
@@ -21,7 +23,56 @@ namespace random_user_generator_api.Services
         //Criar / salvar usuário no db
         public async Task<User> FetchAndSaveRandomUserAsync()
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.GetAsync("https://randomuser.me/api/");
+
+            //Lançamento de exceções
+            response.EnsureSuccessStatusCode();
+
+            //Deserialize do json para os DTOs de mapeamento
+            var jsonString = await response.Content.ReadAsStringAsync();
+
+            var apiResponse = JsonConvert.DeserializeObject<RandomUserApiResponse>(jsonString);
+
+            //Garante que pelo menos um usuário foi retornado
+            if (apiResponse?.Results == null || !apiResponse.Results.Any())
+            {
+                throw new ApplicationException("A API externa não retornou nenhum usuário.");
+            }
+
+            var apiUserResult = apiResponse.Results.First();
+
+            //Mapeamento dos DTOs para a entidade User
+            var userToSave = MapApiResultToUser(apiUserResult);
+
+            //Chama o repositório
+            await _userRepository.AddAsync(userToSave);
+
+            return userToSave;
+        }
+
+        //Método auxiliar para mapeamento
+        private User MapApiResultToUser(ApiUserResult apiUser)
+        {
+            return new User
+            {
+                Uuid = apiUser.Login.Uuid,
+
+                FirstName = apiUser.Name.First,
+                LastName = apiUser.Name.Last,
+
+                Email = apiUser.Email,
+                PhoneNumber = apiUser.Phone,
+
+                DateOfBirth = apiUser.Dob.Date ?? DateTime.MinValue,
+
+                StreetName = apiUser.Location.Street.Name,
+                StreetNumber = apiUser.Location.Street.Number,
+                City = apiUser.Location.City,
+                State = apiUser.Location.State,
+                Country = apiUser.Location.Country,
+
+                Password = apiUser.Login.Password,
+            };
         }
 
         //Listar usuários salvos no db
@@ -31,7 +82,7 @@ namespace random_user_generator_api.Services
         }
 
         //Atualizar informações
-        public async Task<UserResponseDto> UpdateUserAsync(int id, UserRequestDto requestDto)
+        public async Task<UserResponseDto> UpdateUserAsync(int id, UserResponseDto requestDto)
         {
             throw new NotImplementedException();
         }

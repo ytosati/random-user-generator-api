@@ -15,6 +15,6 @@ namespace random_user_generator_api.Services
         Task<List<UserResponseDto>> GetAllUsersAsync();
 
         //Atualizar informações
-        Task<UserResponseDto> UpdateUserAsync(int id, UserRequestDto requestDto);
+        Task<UserResponseDto> UpdateUserAsync(int id, UserResponseDto requestDto);
     }
 }

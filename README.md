@@ -1,7 +1,7 @@
 random-user-generator-api
 
 Log de alterações:
-
+HEAD<V0>
 1. Configuração e Infraestrutura (Program.cs e appsettings.json)
 Configurado o framework ASP.NET Core para rodar a aplicação e conectar ao banco de dados.
 Foi configurada a conexão com o PostgreSQL via Entity Framework Core (EF Core), utilizando a connection string definida no appsettings.json. O Program.cs também estabeleceu a Injeção de Dependência (DI) para todas as camadas (Services, Repositories) e o HttpClient para consumo da API externa.
@@ -26,3 +26,11 @@ RandomUserApiModels.cs: Define o formato de entrada para o consumo da API extern
 Criada a base que trabalhará a lógica de negócio principal da API.
 
 A interface IUserService.cs foi criada para declarar os três métodos principais da API: Criar e Salvar (consumo da API), Listar Usuários (relatório) e Atualizar Usuário. A classe UserService.cs está pronta para ser implementada, orquestrando o HttpClient e o UserRepository.
+
+HEAD<V1>
+1. Resolvidas várias dependências de pacote 
+já possuia o visual studio na versão 9.0 e ao baixar alguns pacotes, ocorreram conflitos, que já foram resolvidos.
+
+2. implementado o primeiro método FetchAndSaveRandomUserAsync
+o método consome a api e recebe seus dados um objeto User que é salvo no banco.
+já foi testado, e está funcional, mas precisará passar por tratamento no output dos dados.
