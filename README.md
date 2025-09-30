@@ -36,3 +36,14 @@ já possuia o visual studio na versão 9.0 e ao baixar alguns pacotes, ocorreram
 2. implementado o primeiro método FetchAndSaveRandomUserAsync
 o método consome a api e recebe seus dados um objeto User que é salvo no banco.
 já foi testado, e está funcional, mas precisará passar por tratamento no output dos dados.
+
+<header>V2</header>
+
+1. Implementados métodos get e patch
+get retorna uma lista (omitindo senha e dados de auditoria, que ficam disponíveis no banco de dados)
+patch envia um corpo de requisição json informando qual campo deve ser atualizado.
+em caso de alteração de senha, será necessário preencher o campo senha atual (para garantir que só quem saiba a senha possa alterará-la) e confirmação de nova senha (para evitar que uma nova senha seja cadastrada com erros de digitação)
+
+2. Tratados dados de saída no corpo de resposta das requisições
+método post passa a retornar a senha (já que o usuário está sendo criado, este será o primeiro contato do usuário com a senha, e ele precisa saber a senha caso queira alterar posteriormente). Dados de auditoria e Uuid omitidos e disponíveis apenas no DB.
+método get omite senha e dados de auditoria, para proteger informações sensíveis a quem acessar o relatório.
