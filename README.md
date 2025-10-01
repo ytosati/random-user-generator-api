@@ -51,20 +51,21 @@ cd random-user-generator-api
    
       Crie um banco de dados vazio no seu servidor PostgreSQL. O nome padrão utilizado no projeto é random_user_generator_db.
 
+      A tabela será criada automaticamente pelo EF Core
+
     - Atualizar a Connection String
 
-      Edite o arquivo appsettings.Development.json (ou appsettings.json para outros ambientes) e atualize a string de conexão DefaultConnection com suas credenciais do PostgreSQL.
+      Edite o arquivo appsettings.json e atualize a string de conexão DefaultConnection com suas credenciais do PostgreSQL.
 
-### ⚠️ IMPORTANTE: Certifique-se de que o Username e Password correspondem ao seu banco de dados local.
+#### ⚠️ IMPORTANTE: 
+
+Certifique-se de que o Username e Password correspondem ao seu banco de dados local.
 
 ```JSON
-
-// appsettings.Development.json
 {
   "ConnectionStrings": {
     "DefaultConnection": "Host=localhost;Port=5432;Database=random_user_generator_db;Username=SEU_USUARIO_POSTGRES;Password=SUA_SENHA_POSTGRES"
   },
-  // ...
 }
 ```
 
