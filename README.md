@@ -1,6 +1,6 @@
 # random-user-generator-api
 
-API RESTful desenvolvida em ASP.NET Core que gera e gerencia usuários. A API consome dados de uma API externa (Random User API) e os persiste em um banco de dados PostgreSQL usando Entity Framework Core. 
+API RESTful desenvolvida em ASP.NET Core que gera e gerencia usuários. A API consome dados de uma API externa ([Random User Generator](https://randomuser.me/)) e os persiste em um banco de dados PostgreSQL usando Entity Framework Core. 
 
 - A transferência de dados é realizada por objetos DTO para controlar a visualização e exposição de dados tanto para o usuário quanto para classes internas.
 
