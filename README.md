@@ -75,7 +75,7 @@ Certifique-se de que o Username e Password correspondem ao seu banco de dados lo
 
 - Restaurar Pacotes 
 ```Bash
-  dotnet restore
+dotnet restore
   ```
 
 - Executar o Projeto
