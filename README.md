@@ -1,4 +1,4 @@
-random-user-generator-api
+# random-user-generator-api
 
 API RESTful desenvolvida em ASP.NET Core que gera e gerencia usuários. A API consome dados de uma API externa (Random User API) e os persiste em um banco de dados PostgreSQL usando Entity Framework Core. 
 
@@ -8,8 +8,9 @@ API RESTful desenvolvida em ASP.NET Core que gera e gerencia usuários. A API co
 
 - A documentação Swagger é exibida quando a aplicação é iniciada.
 
-<br>
-⚙️ Arquitetura do Projeto
+
+## ⚙️ Arquitetura do Projeto
+
 O projeto segue uma arquitetura em camadas, no padrão Controller/Service/Repository, promovendo a separação de responsabilidades e facilitando a manutenção:
 
 - Controllers: Lidam com as requisições HTTP e roteamento.
@@ -20,18 +21,22 @@ O projeto segue uma arquitetura em camadas, no padrão Controller/Service/Reposi
 
 - wwwroot: Contém os arquivos estáticos da interface web (HTML, CSS, JavaScript).
 
-<br>
-🛠️ Pré-requisitos
+
+## 🛠️ Pré-requisitos
+
 Para rodar o projeto localmente, você precisará ter instalado:
 
 1. [.NET SDK (Versão 7.0 ou superior)](https://dotnet.microsoft.com/pt-br/download)
 
 2. [PostgreSQL Server (Versão 12 ou superior recomendada)](https://www.postgresql.org/download/)
 
-💻 Configuração e Instalação
+
+## 💻 Configuração e Instalação
+
 Siga estes passos para configurar e executar a API.
 
 1. Clonar o Repositório
+
 ```Bash
 
 git clone https://github.com/ytosati/random-user-generator-api.git
@@ -39,15 +44,18 @@ cd random-user-generator-api
 ```
 
 2. Configurar o Banco de Dados
-A API utiliza o PostgreSQL. Você precisa configurar as credenciais de acesso.
 
-    a. Criar o Banco de Dados
-    Crie um banco de dados vazio no seu servidor PostgreSQL. O nome padrão utilizado no projeto é random_user_generator_db.
+    A API utiliza o PostgreSQL. Você precisa configurar as credenciais de acesso.
 
-    b. Atualizar a Connection String
-    Edite o arquivo appsettings.Development.json (ou appsettings.json para outros ambientes) e atualize a string de conexão DefaultConnection com suas credenciais do PostgreSQL.
+    - Criar o Banco de Dados
+   
+      Crie um banco de dados vazio no seu servidor PostgreSQL. O nome padrão utilizado no projeto é random_user_generator_db.
 
-⚠️ IMPORTANTE: Certifique-se de que o Username e Password correspondem ao seu banco de dados local.
+    - Atualizar a Connection String
+
+      Edite o arquivo appsettings.Development.json (ou appsettings.json para outros ambientes) e atualize a string de conexão DefaultConnection com suas credenciais do PostgreSQL.
+
+### ⚠️ IMPORTANTE: Certifique-se de que o Username e Password correspondem ao seu banco de dados local.
 
 ```JSON
 
@@ -61,23 +69,23 @@ A API utiliza o PostgreSQL. Você precisa configurar as credenciais de acesso.
 ```
 
 3. Instalar Dependências e Rodar Migrações
-O Entity Framework Core aplicará as migrações automaticamente na inicialização, criando as tabelas necessárias.
 
-    a. Restaurar Pacotes 
+    O Entity Framework Core aplicará as migrações automaticamente na inicialização, criando as tabelas necessárias.
 
-    b. Executar o Projeto
-
+- Restaurar Pacotes 
 ```Bash
-dotnet restore
-```
-    
+  dotnet restore
+  ```
+
+- Executar o Projeto
 
 ```Bash
 dotnet run
 ```
 
-<br>
-🚀 Uso e Endpoints
+
+## 🚀 Uso e Endpoints
+
 Após a execução, a API estará acessível nas seguintes URLs (padrão do launchSettings.json):
 
 - HTTPS: https://localhost:7068
@@ -102,8 +110,8 @@ Você pode testar os endpoints diretamente usando ferramentas como Swagger UI ou
 | **`GET`** | `/api/Users` | Lista todos os usuários cadastrados no banco de dados. |
 | **`PATCH`** | `/api/Users/{id}` | Atualiza parcialmente os dados de um usuário pelo seu `Id` (nome, telefone ou senha). Requer a senha atual para alteração de senha. |
 
-<br>
-Como utilizar:
+
+### Como utilizar:
 
 Ao preparar o ambiente, o banco estará vazio. Fazer requisições Post irá popular o banco com as informações consumidas pela API externa.
 
