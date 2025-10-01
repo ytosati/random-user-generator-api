@@ -49,7 +49,7 @@ cd random-user-generator-api
 
     - Criar o Banco de Dados
    
-      Crie um banco de dados vazio no seu servidor PostgreSQL. O nome padrão utilizado no projeto é random_user_generator_db.
+      Crie um banco de dados vazio no seu servidor PostgreSQL. O nome padrão utilizado no projeto é randomuserdb.
 
       A tabela será criada automaticamente pelo EF Core
 
