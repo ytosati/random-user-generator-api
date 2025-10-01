@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Dados - Random User Generator API</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <button class="back-button" onclick="navigateTo('index.html')">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </button>
+            <h1 class="page-title">Atualizar Dados</h1>
+        </header>
+
+        <main class="page-content">
+            <div class="form-container">
+                <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50; text-align: center;">
+                    Selecione o dado que deseja alterar e informe o ID do usuário
+                </p>
+
+                <div id="success-message" class="success-message hidden">
+                    Informação alterada com sucesso!
+                </div>
+
+                <div id="error-message" class="error-message hidden"></div>
+
+                <form id="update-form">
+                    <div class="form-group">
+                        <label for="user-id" class="form-label">ID do Usuário:</label>
+                        <input type="number" id="user-id" class="form-input" placeholder="Digite o ID do usuário">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data-select" class="form-label">Campo a alterar:</label>
+                        <select id="data-select" class="form-select" onchange="handleFieldChange()">
+                            <option value="">Selecione um campo</option>
+                            <option value="nome">Nome</option>
+                            <option value="email">Email</option>
+                            <option value="senha">Senha</option>
+                            <option value="telefone">Telefone</option>
+                            <option value="data_nascimento">Data de Nascimento</option>
+                            <option value="nome_rua">Nome da Rua</option>
+                            <option value="numero">Número</option>
+                            <option value="cidade">Cidade</option>
+                            <option value="estado">Estado</option>
+                            <option value="pais">País</option>
+                        </select>
+                    </div>
+
+                    <div id="password-fields" class="hidden">
+                        <div class="form-group">
+                            <label for="current-password" class="form-label">Senha Atual:</label>
+                            <input type="password" id="current-password" class="form-input" placeholder="Digite sua senha atual">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="new-value" class="form-label">Nova informação:</label>
+                        <input type="text" id="new-value" class="form-input" placeholder="Digite a nova informação">
+                    </div>
+
+                    <div id="confirm-password-field" class="form-group hidden">
+                        <label for="confirm-password" class="form-label">Confirme a nova senha:</label>
+                        <input type="password" id="confirm-password" class="form-input" placeholder="Confirme a nova senha">
+                    </div>
+
+                    <button type="button" class="form-button" onclick="handleSubmit()">
+                        Confirmar
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/atualizar-dados.js"></script>
+</body>
+</html>

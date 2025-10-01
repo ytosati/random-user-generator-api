@@ -10,6 +10,17 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configuração do CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 //Configuração do EF Core
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -50,12 +61,15 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    
+{   
     // Aplica as migrações automaticamente na inicialização
     using (var scope = app.Services.CreateScope())
     {
@@ -64,7 +78,8 @@ if (app.Environment.IsDevelopment())
     }
 }
 
-app.UseHttpsRedirection();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.MapControllers();
 

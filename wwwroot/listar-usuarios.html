@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Usuários - Random User Generator API</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <button class="back-button" onclick="navigateTo('index.html')">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </button>
+            <h1 class="page-title">Listar Usuários</h1>
+        </header>
+
+        <main class="page-content">
+            <div style="width: 100%; max-height: 400px; overflow-y: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Senha</th>
+                            <th>Telefone</th>
+                            <th>Data de Nascimento</th>
+                            <th>Nome da Rua</th>
+                            <th>Número</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>País</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body">
+                        <!-- Os dados dos usuários serão inseridos aqui pela API -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/listar-usuarios.js"></script>
+</body>
+</html>

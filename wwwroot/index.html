@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User Generator API</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Random User Generator API</h1>
+        </header>
+
+        <main class="main-content">
+            <div class="button-grid">
+                <button class="action-button create-user" onclick="navigateTo('criar-usuario.html')">
+                    <div class="button-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <span class="button-text">Criar Usuário</span>
+                </button>
+
+                <button class="action-button list-users" onclick="navigateTo('listar-usuarios.html')">
+                    <div class="button-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <span class="button-text">Listar Usuários</span>
+                </button>
+
+                <button class="action-button update-data" onclick="navigateTo('atualizar-dados.html')">
+                    <div class="button-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <span class="button-text">Atualizar Dados</span>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Usuário - Random User Generator API</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <button class="back-button" onclick="navigateTo('index.html')">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </button>
+            <h1 class="page-title">Criar Usuário</h1>
+        </header>
+
+        <main class="page-content">
+            <!-- Mensagem de sucesso (escondida inicialmente) -->
+            <div id="success-message" class="success-message hidden">
+                Usuário criado com sucesso!
+            </div>
+
+            <!-- Botão para criar usuário -->
+            <div class="form-container" style="margin-bottom: 2rem; text-align: center;">
+                <button class="form-button" onclick="createUser()">
+                    Criar Usuário
+                </button>
+            </div>
+
+            <!-- Tabela de dados -->
+            <div style="width: 100%; max-height: 400px; overflow-y: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Título do Dado</th>
+                            <th>Dado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ID</td><td></td></tr>
+                        <tr><td>Nome</td><td></td></tr>
+                        <tr><td>Email</td><td></td></tr>
+                        <tr><td>Senha</td><td></td></tr>
+                        <tr><td>Telefone</td><td></td></tr>
+                        <tr><td>Data de Nascimento</td><td></td></tr>
+                        <tr><td>Nome da Rua</td><td></td></tr>
+                        <tr><td>Número</td><td></td></tr>
+                        <tr><td>Cidade</td><td></td></tr>
+                        <tr><td>Estado</td><td></td></tr>
+                        <tr><td>País</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/criar-usuario.js"></script>
+</body>
+</html>
