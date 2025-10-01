@@ -84,14 +84,14 @@ Após a execução, a API estará acessível nas seguintes URLs (padrão do laun
 
 - HTTP: http://localhost:5229
 
-1. Interface Web (Frontend)
+Interface Web (Frontend)
 Execute o arquivo index.html, dentro da pasta wwwroot:
 
 🔗 Acessar Interface: https://localhost:7068/
 
 A interface permite testar os seguintes endpoints.
 
-2. Endpoints da API
+Endpoints da API
 Você pode testar os endpoints diretamente usando ferramentas como Swagger UI ou Postman/Insomnia.
 
 🔗 Documentação (Swagger UI): https://localhost:7068/swagger
@@ -101,3 +101,16 @@ Você pode testar os endpoints diretamente usando ferramentas como Swagger UI ou
 | **`POST`** | `/api/Users/generate` | Gera um novo usuário aleatório através de uma API externa, salva os dados no banco de dados e retorna o registro criado (incluindo a senha). |
 | **`GET`** | `/api/Users` | Lista todos os usuários cadastrados no banco de dados. |
 | **`PATCH`** | `/api/Users/{id}` | Atualiza parcialmente os dados de um usuário pelo seu `Id` (nome, telefone ou senha). Requer a senha atual para alteração de senha. |
+
+<br>
+Como utilizar:
+
+Ao preparar o ambiente, o banco estará vazio. Fazer requisições Post irá popular o banco com as informações consumidas pela API externa.
+
+Com o banco populado, é possível buscar o relatório com o método Get ou alterar dados com o método Patch, que já salva a alteração no banco.
+
+Optei por trabalhar com uma simples lógica de negócio onde o campo Senha só aparece para o usuário no momento em que o método Post é chamado. 
+
+Após esse momento, a senha fica disponível no banco mas não pode ser visualizada pelo relatório geral (método get)
+
+Finalmente, para que altere o campo Senha por meio do método Patch, o usuário deve saber a senha atual, e confirmar a nova senha, para evitar mudanças de senha por erros de digitação.
